@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bfkrilxva4o1n"]
+
+[ext_resource type="Script" uid="uid://c5130ur8mjjya" path="res://player/player.gd" id="1_oul6g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r030d"]
+size = Vector2(40, 60)
+
+[node name="Player" type="CharacterBody2D" unique_id=2052805216]
+script = ExtResource("1_oul6g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2107695897]
+shape = SubResource("RectangleShape2D_r030d")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1634602680]
+color = Color(0.9318977, 0.6361511, 0.8070521, 1)
+polygon = PackedVector2Array(-20, -30, 20, -30, 20, 30, -20, 30)
+
+[node name="Label" type="Label" parent="." unique_id=917592992]
+offset_left = -20.0
+offset_top = -30.0
+offset_right = 20.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 12
+text = "Player"
+horizontal_alignment = 1
+vertical_alignment = 1
