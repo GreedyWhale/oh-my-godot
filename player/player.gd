@@ -4,8 +4,7 @@ extends CharacterBody2D
 
 @onready var label: Label = $Label
 
-var current_stamina: int
-var sprint_duration := 0.0
+var current_stamina: float
 
 func _ready() -> void:
 	current_stamina = config.MAX_STAMINA
@@ -32,13 +31,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func drain_stamina(delta) -> void:
-	sprint_duration += delta
-	sprint_duration = min(sprint_duration, config.MAX_SPRINT_DURATION)
-	
-	current_stamina = config.MAX_STAMINA * (1.0 - sprint_duration / config.MAX_SPRINT_DURATION)
+	var stamina_drain_rate = config.MAX_STAMINA / config.MAX_SPRINT_DURATION
+	current_stamina -= stamina_drain_rate * delta
+	current_stamina = max(0, current_stamina)
 
 func regenerate_stamina(delta) -> void:
-	sprint_duration -= delta
-	sprint_duration = max(sprint_duration,0)
-	
-	current_stamina = config.MAX_STAMINA * (1.0 - sprint_duration / config.MAX_SPRINT_DURATION)
+	var stamina_recovery_rate = config.MAX_STAMINA / config.MAX_RECOVERY_DURATION
+	current_stamina += stamina_recovery_rate * delta
+	current_stamina = min(config.MAX_STAMINA, current_stamina)

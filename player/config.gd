@@ -10,4 +10,5 @@ extends Resource
 const MAX_STAMINA = 100.0
 # 最大冲刺时间， 单位秒
 const MAX_SPRINT_DURATION = 1.5
-
+# 最大恢复时间，单位秒
+const MAX_RECOVERY_DURATION = 3.0
