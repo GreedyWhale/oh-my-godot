@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://df7h8vmv1f0bi"]
+
+[ext_resource type="PackedScene" uid="uid://do6e6nyqpxdaw" path="res://sprite_2d.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://bf2mual3ukhqg" path="res://sprite_2d.gd" id="2_0xm2m"]
+
+[node name="Main" type="Node2D" unique_id=1670233709]
+
+[node name="Sprite2d" parent="." unique_id=1322680523 instance=ExtResource("1_ig7tw")]
+position = Vector2(576, 232)
+script = ExtResource("2_0xm2m")
