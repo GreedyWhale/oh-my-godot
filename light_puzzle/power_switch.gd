@@ -1,22 +1,23 @@
-extends Button
+extends Container
+
+signal onPressed
 
 var is_turned_on = false
-@onready var original_style = get_theme_stylebox("normal")
-# Called when the node enters the scene tree for the first time.
+var indicator_original_bg_color: Color
+var indicator_original_style: StyleBoxFlat
+@onready var indicator: Panel = get_node('Indicator')
+@onready var button: Button = get_node('Button')
+
 func _ready() -> void:
-	pass
+	indicator_original_style = indicator.get_theme_stylebox("panel").duplicate() as StyleBoxFlat
+	indicator_original_bg_color = indicator_original_style.bg_color
+	indicator.add_theme_stylebox_override('panel', indicator_original_style)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _on_pressed() -> void:
+func _on_button_pressed() -> void:
 	is_turned_on = not is_turned_on
-	if is_turned_on:
-		var style = original_style.duplicate()
-		style.bg_color = Color.RED
-		add_theme_stylebox_override("normal", style)
-	else:
-		add_theme_stylebox_override("normal", original_style)
+	indicator_original_style.bg_color = Color.GREEN if is_turned_on else indicator_original_bg_color
+	print(indicator_original_style.bg_color)
+	onPressed.emit()
+	
+func set_switch_name(name: String) -> void:
+	button.text = name

@@ -13,11 +13,13 @@ func _process(delta: float) -> void:
 	
 func initPowerSwitch() -> void:
 	for n in 3:
-		var button: Button = power_switch_scene.instantiate()
+		var scene: Container = power_switch_scene.instantiate()
+		$BoxContainer.add_child(scene)
+
 		var order_number = n + 1
-		button.text = "Power Switch %s" % order_number
-		button.pressed.connect(on_power_switch_pressed.bind(order_number))
-		$BoxContainer.add_child(button)
+		var button_text = "Power Switch %s" % order_number
+		scene.set_switch_name(button_text)
+		scene.onPressed.connect(on_power_switch_pressed.bind(order_number))
 		
 func on_power_switch_pressed(order_number: int) -> void:
 	print("开关 %s 被点击了" % order_number)
