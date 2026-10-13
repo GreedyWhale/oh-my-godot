@@ -9,6 +9,9 @@
 position = Vector2(576, 232)
 script = ExtResource("2_0xm2m")
 
+[node name="Timer" type="Timer" parent="Sprite2d" unique_id=859603005]
+autostart = true
+
 [node name="Button" type="Button" parent="." unique_id=928353372]
 offset_left = 64.0
 offset_top = 96.0
