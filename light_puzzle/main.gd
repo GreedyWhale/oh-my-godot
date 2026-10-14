@@ -1,25 +1,65 @@
 extends Node
 
-var power_switch_scene: PackedScene = preload("res://light_puzzle/power_switch.tscn")
 
-# Called when the node enters the scene tree for the first time.
+var power_switch_scene: PackedScene = preload(
+	"res://light_puzzle/power_switch.tscn"
+)
+
+var switch_states: Array[bool] = []
+
+
+
 func _ready() -> void:
-	initPowerSwitch()
+
+	create_power_switches()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
-func initPowerSwitch() -> void:
-	for n in 3:
-		var scene: Container = power_switch_scene.instantiate()
-		$BoxContainer.add_child(scene)
 
-		var order_number = n + 1
-		var button_text = "Power Switch %s" % order_number
-		scene.set_switch_name(button_text)
-		scene.onPressed.connect(on_power_switch_pressed.bind(order_number))
+func create_power_switches() -> void:
+
+
+	for i in 3:
+		switch_states.append(false)
 		
-func on_power_switch_pressed(order_number: int) -> void:
-	print("开关 %s 被点击了" % order_number)
+		# 创建组件
+		var switch: PowerSwitch = (
+			power_switch_scene.instantiate()
+		)
+
+
+		# 加入 SceneTree
+		$BoxContainer.add_child(
+			switch
+		)
+
+
+		# 初始化组件
+		switch.initialize(
+			i,
+			"Power Switch %s" % (i + 1)
+		)
+
+
+		# 监听事件
+		switch.state_changed.connect(
+			_on_switch_changed
+		)
+
+
+
+
+func _on_switch_changed(
+	id: int,
+	value: bool
+) -> void:
+	switch_states[id] = value
+	if is_game_over():
+		$CanvasLayer/ResultUI.show_result("挑战成功")
+	
+func is_game_over() -> bool:
+	var turned_on_count = 0
+	for item in switch_states:
+		if item:
+			turned_on_count += 1
+	
+	return turned_on_count == 2

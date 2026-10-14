@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cyu6drhli7rrs"]
 
 [ext_resource type="Script" uid="uid://bif3htd63sk7e" path="res://light_puzzle/main.gd" id="1_qcpma"]
+[ext_resource type="Script" uid="uid://d36q5tilwhyt8" path="res://light_puzzle/result_ui.gd" id="2_kqg58"]
 
 [node name="Main" type="Node" unique_id=982417720]
 script = ExtResource("1_qcpma")
@@ -47,3 +48,30 @@ offset_bottom = -51.0
 grow_horizontal = 2
 grow_vertical = 0
 text = " 点击任意开关"
+
+[node name="ResultUI" type="Control" parent="CanvasLayer" unique_id=1578367635]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_kqg58")
+
+[node name="Label" type="Label" parent="CanvasLayer/ResultUI" unique_id=312177885]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.33039454, 0.7596356, 0.89351624, 1)
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1

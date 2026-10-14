@@ -34,5 +34,3 @@ layout_mode = 2
 theme_override_constants/align_to_largest_stylebox = 1
 theme_override_styles/normal = SubResource("StyleBoxFlat_r030d")
 text = "Power Switch"
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
