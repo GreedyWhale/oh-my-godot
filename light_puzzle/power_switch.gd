@@ -65,6 +65,11 @@ func _on_button_pressed() -> void:
 	set_state(
 		not is_turned_on
 	)
+	
+	state_changed.emit(
+		switch_id,
+		is_turned_on
+	)
 
 
 
@@ -81,11 +86,6 @@ func set_state(value: bool) -> void:
 
 	update_indicator()
 
-
-	state_changed.emit(
-		switch_id,
-		is_turned_on
-	)
 
 
 
