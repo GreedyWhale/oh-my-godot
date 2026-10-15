@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cyu6drhli7rrs"]
 
-[ext_resource type="Script" uid="uid://bif3htd63sk7e" path="res://light_puzzle/main.gd" id="1_qcpma"]
-[ext_resource type="Script" uid="uid://h1j55ynmbee4" path="res://light_puzzle/canvas_layer.gd" id="2_ntq7p"]
+[ext_resource type="Script" uid="uid://bif3htd63sk7e" path="res://main.gd" id="1_qcpma"]
+[ext_resource type="Script" uid="uid://h1j55ynmbee4" path="res://canvas_layer.gd" id="2_ntq7p"]
 
 [sub_resource type="GDScript" id="GDScript_kqg58"]
 script/source = "extends Control

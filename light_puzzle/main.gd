@@ -2,7 +2,7 @@ extends Node
 
 
 var power_switch_scene: PackedScene = preload(
-	"res://light_puzzle/power_switch.tscn"
+	"res://power_switch.tscn"
 )
 
 var switchs: Array[PowerSwitch] = []
